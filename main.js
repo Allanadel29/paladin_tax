@@ -31,7 +31,8 @@ const services = [
       'Monthly VAT return preparation and submision',
       'VAT reconciliation to accouting records',
       'ZRA filing acknowledgements',
-      'Support during VAT audits'
+      'Support during VAT audits',
+      'Assisting clients with VAT refund claims'
     ]
   },
 
@@ -217,6 +218,8 @@ const services = [
 const INTERVAL = 10000;
 let current = 0;
 let timer = null;
+let scrollPosition = 0;
+let overlayWasOpen = false;
 
 const display = document.getElementById('service-display');
 const dotsContainer = document.getElementById('service-dots');
@@ -260,6 +263,14 @@ function showKeyDeliverablesOverlay(service) {
   detailOverlay.classList.add('active');
   globalCloseBtn.classList.add('show');
   
+  // Save scroll position and disable background scrolling
+  scrollPosition = window.scrollY;
+  overlayWasOpen = true;
+  document.body.style.overflow = 'hidden';
+  document.body.style.position = 'fixed';
+  document.body.style.width = '100%';
+  document.body.style.top = `-${scrollPosition}px`;
+  
   if (hasSubDeliverables) {
     // Add click handlers for deliverable buttons
     const deliverableBtns = detailContent.querySelectorAll('.deliverable-btn');
@@ -294,6 +305,15 @@ function showSubDeliverablesOverlay(service, deliverable) {
     </div>
   `;
   
+  // Save scroll position and disable background scrolling
+  if (!scrollPosition) {
+    scrollPosition = window.scrollY;
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${scrollPosition}px`;
+  }
+  
   // Add get quote button handler
   const getQuoteBtn = detailContent.querySelector('.get-quote-btn');
   getQuoteBtn.addEventListener('click', () => {
@@ -310,6 +330,19 @@ function closeOverlay() {
   if (globalCloseBtn) {
     globalCloseBtn.classList.remove('show');
   }
+  
+  // Restore scroll position and enable background scrolling
+  document.body.style.overflow = 'auto';
+  document.body.style.position = 'static';
+  document.body.style.width = 'auto';
+  document.body.style.top = 'auto';
+  
+  if (overlayWasOpen) {
+    window.scrollTo(0, scrollPosition);
+    overlayWasOpen = false;
+  }
+  scrollPosition = 0;
+  
   startTimer(); // Restart the carousel timer when overlay is closed
 }
 
@@ -499,7 +532,8 @@ document.addEventListener('DOMContentLoaded', () => {
             typeSpeed: 100,
             backSpeed: 60,
             backDelay: 1000,
-            loop: true
+            loop: true,
+            showCursor: false
         });
     } else {
         console.error('Typed.js not loaded. Ensure <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script> is included before main.js');
@@ -541,4 +575,108 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 16);
     }
+
+    // Animation for sections on scroll/view
+    function triggerSectionAnimations(element) {
+        const aboutImg = element.querySelector('.about-img');
+        const aboutText = element.querySelector('.about-text');
+        
+        if (aboutImg) {
+            aboutImg.style.animation = 'slideLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+        }
+        if (aboutText) {
+            aboutText.style.animation = 'slideRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+            
+            // Stagger animations for text elements
+            const h2 = aboutText.querySelector('h2');
+            const h4 = aboutText.querySelector('h4');
+            const paragraphs = aboutText.querySelectorAll('p');
+            const btn = aboutText.querySelector('.btn-box');
+            
+            if (h2) h2.style.animation = 'slideTop 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.2s';
+            if (h4) h4.style.animation = 'slideTop 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.3s';
+            
+            paragraphs.forEach((p, index) => {
+                p.style.animation = `slideLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards ${0.4 + index * 0.1}s`;
+            });
+            
+            if (btn) btn.style.animation = 'slideBottom 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.8s';
+        }
+    }
+
+    function triggerAchievementAnimations(element) {
+        const imgContainer = element.querySelector('.image-container');
+        const content = element.querySelector('.content');
+        
+        if (imgContainer) {
+            imgContainer.style.animation = 'slideLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+        }
+        if (content) {
+            content.style.animation = 'slideRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+            
+            // Stagger animations for content
+            const h4 = content.querySelector('.subheading');
+            const h2 = content.querySelector('.heading');
+            const p = content.querySelector('.commonText');
+            
+            if (h4) h4.style.animation = 'slideTop 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.2s';
+            if (h2) h2.style.animation = 'slideTop 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.3s';
+            if (p) p.style.animation = 'slideLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.4s';
+        }
+    }
+
+    function triggerContactAnimations(element) {
+        const contactText = element.querySelector('.contact-text');
+        const contactForm = element.querySelector('.contact-form');
+        
+        if (contactText) {
+            const h2 = contactText.querySelector('h2');
+            const h4 = contactText.querySelector('h4');
+            const p = contactText.querySelector('p');
+            const btn = contactText.querySelector('.contact-btn-mobile');
+            
+            if (h2) h2.style.animation = 'slideLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+            if (h4) h4.style.animation = 'slideLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.2s';
+            if (p) p.style.animation = 'slideLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.3s';
+            if (btn) btn.style.animation = 'slideBottom 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.4s';
+        }
+        
+        if (contactForm) {
+            contactForm.style.animation = 'slideRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+        }
+    }
+
+    // Create intersection observer for section animations
+    const sectionObserverOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const section = entry.target;
+                
+                if (section.id === 'about') {
+                    triggerSectionAnimations(section);
+                } else if (section.classList.contains('achievement')) {
+                    triggerAchievementAnimations(section);
+                } else if (section.id === 'contact') {
+                    triggerContactAnimations(section);
+                }
+                
+                // Unobserve after animation has been triggered
+                sectionObserver.unobserve(section);
+            }
+        });
+    }, sectionObserverOptions);
+
+    // Observe sections
+    const aboutSection = document.getElementById('about');
+    const achievementSection = document.querySelector('.achievement');
+    const contactSection = document.getElementById('contact');
+
+    if (aboutSection) sectionObserver.observe(aboutSection);
+    if (achievementSection) sectionObserver.observe(achievementSection);
+    if (contactSection) sectionObserver.observe(contactSection);
 });
