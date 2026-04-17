@@ -162,7 +162,7 @@ h6 {
     font-weight: 600;
     cursor: default;
     opacity: 0;
-    animation: slideRight 1s ease forwards;
+    animation: slideRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .logo figcaption {
@@ -189,7 +189,7 @@ h6 {
     border-radius: 40px;
     margin-left: 15px;
     opacity: 0;
-    animation: slideTop .5s ease forwards;
+    animation: slideTop .8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     animation-delay: calc(.2s * var(--i));
     box-shadow: 0 0 5px rgb(16, 182, 233);
     transition: 0.3s;
@@ -240,13 +240,13 @@ i {
 .home-content h3 {
     font-size: 32px;
     font-weight: 700;
-    animation: slideBottom 1s ease forwards;
+    animation: slideBottom 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     animation-delay: .1s;
 }
 
 .home-content h1:nth-of-type(2) {
     margin-bottom: 30px;
-    animation: slideTop 1s ease forwards;
+    animation: slideTop 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     animation-delay: .7s;
 }
 
@@ -254,13 +254,13 @@ i {
     font-size: 50px;
     font-weight: 700;
     margin: -3px 0;
-    animation: slideRight 1s ease forwards;
+    animation: slideRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     animation-delay: .7s;
 }
 
 .home-content p {
     font-size: 20px;
-    animation: slideLeft 1s ease forwards;
+    animation: slideLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     animation-delay: 1s;
 }
 
@@ -285,7 +285,7 @@ i {
     text-decoration: none;
     transition: .5s ease;
     opacity: 0;
-    animation: slideLeft 1s ease forwards;
+    animation: slideLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     animation-delay: calc(.2s * var(--1));
     margin: 30px 15px 30px 0;
 }
@@ -309,7 +309,7 @@ i {
     text-decoration: none;
     font-weight: 600;
     opacity: 0;
-    animation: slideTop 1s ease forwards;
+    animation: slideTop 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     animation-delay: .2s;
     box-shadow: 0 0 5px rgb(16, 182, 233);
 }
@@ -482,9 +482,9 @@ i {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(16, 182, 233, 0.8);
+    background: transparent;
     border: none;
-    color: white;
+    color: rgb(16, 182, 233);
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -494,12 +494,13 @@ i {
     justify-content: center;
     font-size: 20px;
     transition: all 0.3s ease;
-    z-index: 100;
+    z-index: 50;
 }
 
 .nav-arrow:hover {
-    background: rgba(16, 182, 233, 1);
+    background: transparent;
     transform: translateY(-50%) scale(1.1);
+    color: rgb(16, 182, 233);
 }
 
 .nav-arrow:active {
@@ -672,7 +673,7 @@ i {
     background: rgba(16, 182, 233, 0.1);
     border-radius: 12px;
     border: 2px solid rgb(16, 182, 233);
-    animation: slideDown 0.4s ease-out;
+    animation: slideDown 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ease-out;
     max-height: 500px;
     overflow-y: auto;
 }
@@ -754,7 +755,7 @@ i {
 .detail-overlay.active {
     display: flex;
     opacity: 1;
-    animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ease-out;
 }
 
 @keyframes fadeIn {
@@ -774,7 +775,7 @@ i {
     box-shadow: 0 0 50px rgba(16, 182, 233, 0.6);
     border: 2px solid rgb(16, 182, 233);
     overflow: hidden;
-    animation: slideUp 0.4s ease-out;
+    animation: slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ease-out;
 }
 
 @keyframes slideUp {
