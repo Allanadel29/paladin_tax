@@ -379,6 +379,17 @@ function updateDots() {
   Array.from(dotsContainer.children).forEach((d, i) => d.classList.toggle('active', i === current));
 }
 
+function updateArrows() {
+  const navArrowLeft = document.getElementById('nav-arrow-left');
+  if (navArrowLeft) {
+    if (current === 0) {
+      navArrowLeft.classList.add('hidden');
+    } else {
+      navArrowLeft.classList.remove('hidden');
+    }
+  }
+}
+
 function show(i) {
   current = (i + services.length) % services.length;
   renderService(current);
@@ -387,6 +398,7 @@ function show(i) {
   closeOverlay();
   
   updateDots();
+  updateArrows();
 }
 
 function next() { show(current + 1); }
@@ -455,6 +467,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactBtnMobile && contactForm) {
       contactBtnMobile.addEventListener('click', () => {
         contactForm.style.display = contactForm.style.display === 'block' ? 'none' : 'block';
+      });
+    }
+    
+    // Arrow navigation functionality
+    const navArrowLeft = document.getElementById('nav-arrow-left');
+    const navArrowRight = document.getElementById('nav-arrow-right');
+    
+    if (navArrowLeft) {
+      navArrowLeft.addEventListener('click', () => {
+        show(current - 1);
+        resetTimer();
+      });
+    }
+    
+    if (navArrowRight) {
+      navArrowRight.addEventListener('click', () => {
+        show(current + 1);
+        resetTimer();
       });
     }
     
