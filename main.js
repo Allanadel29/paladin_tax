@@ -318,7 +318,7 @@ function showSubDeliverablesOverlay(service, deliverable) {
   const getQuoteBtn = detailContent.querySelector('.get-quote-btn');
   getQuoteBtn.addEventListener('click', () => {
     closeOverlay();
-    scrollToContact(service.title);
+    scrollToContact(service.title, deliverable);
   });
 }
 
@@ -347,7 +347,7 @@ function closeOverlay() {
 }
 
 // Function to scroll to contact section and set subject
-function scrollToContact(serviceTitle) {
+function scrollToContact(serviceTitle, keyDeliverable) {
   const contactSection = document.getElementById('contact');
   if (contactSection) {
     contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -356,7 +356,12 @@ function scrollToContact(serviceTitle) {
     setTimeout(() => {
       const subjectInput = document.querySelector('.contact-form input[name="subject"]');
       if (subjectInput) {
-        subjectInput.value = `Quotation Request: ${serviceTitle}`;
+        // Format subject based on whether keyDeliverable is provided
+        if (keyDeliverable) {
+          subjectInput.value = `Quotation Request: ${serviceTitle}-${keyDeliverable}`;
+        } else {
+          subjectInput.value = `Quotation Request: ${serviceTitle}`;
+        }
         subjectInput.focus();
       }
     }, 1000);
@@ -502,6 +507,60 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.style.display = contactForm.style.display === 'block' ? 'none' : 'block';
       });
     }
+
+    // Email validation function
+    function isValidEmail(email) {
+      // Email format validation using regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    // List of common disposable email domains to block
+    const disposableDomains = [
+      'tempmail.com', 'throwaway.email', 'guerrillamail.com', '10minutemail.com',
+      'mailinator.com', 'temp-mail.org', 'fakeinbox.com', 'tempEmail.com',
+      'yopmail.com', 'temp.email', 'maildrop.cc', 'mailnesia.com'
+    ];
+
+    // Check if email exists and is valid
+    async function checkEmailValidity(email) {
+      // First check format
+      if (!isValidEmail(email)) {
+        return { valid: false, message: 'Invalid email format. Please enter a valid email address (e.g., name@domain.com)' };
+      }
+
+      // Extract domain from email
+      const domain = email.split('@')[1].toLowerCase();
+
+      // Check if it's a disposable email domain
+      if (disposableDomains.includes(domain)) {
+        return { valid: false, message: 'Disposable email addresses are not allowed. Please use a real email address.' };
+      }
+
+      try {
+        // Use free email validation API (Hunter.io or similar)
+        const response = await fetch(`https://api.hunter.io/v2/email-checker?domain=${encodeURIComponent(domain)}&email=${encodeURIComponent(email)}`);
+        
+        if (!response.ok) {
+          // If API fails, just accept the email if format is valid
+          return { valid: true, message: 'Email format is valid' };
+        }
+
+        const data = await response.json();
+        
+        // Check Hunter.io result
+        if (data.data && data.data.result === 'undeliverable') {
+          return { valid: false, message: 'This email address appears to be invalid or undeliverable.' };
+        }
+
+        return { valid: true, message: 'Email is valid' };
+      } catch (error) {
+        console.warn('Email verification service unavailable, allowing based on format');
+        // Fallback: if API fails, allow submission if format is valid
+        return { valid: true, message: 'Email format is valid' };
+      }
+    }
+    
     
     // Arrow navigation functionality
     const navArrowLeft = document.getElementById('nav-arrow-left');
@@ -679,4 +738,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (aboutSection) sectionObserver.observe(aboutSection);
     if (achievementSection) sectionObserver.observe(achievementSection);
     if (contactSection) sectionObserver.observe(contactSection);
+
+    // Clear form after submission
+    const contactFormElement = document.querySelector('.contact-form form');
+    if (contactFormElement) {
+      contactFormElement.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Get email input
+        const emailInput = contactFormElement.querySelector('input[name="email"]');
+        const email = emailInput ? emailInput.value.trim() : '';
+        
+        // Validate email
+        const emailCheck = await checkEmailValidity(email);
+        
+        if (!emailCheck.valid) {
+          // Show error message
+          alert(`Email Validation Error: ${emailCheck.message}`);
+          emailInput.focus();
+          return; // Prevent form submission
+        }
+        
+        // If email is valid, submit the form
+        contactFormElement.submit();
+        
+        // Clear all form inputs after a short delay to allow submission
+        setTimeout(() => {
+          contactFormElement.reset();
+        }, 500);
+      });
+    }
 });
