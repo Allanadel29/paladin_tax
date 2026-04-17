@@ -517,6 +517,56 @@ i {
 .nav-arrow.hidden {
     display: none;
 }
+
+/* Responsive arrow buttons for small screens */
+@media (max-width: 900px) {
+    .nav-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .nav-arrow-left {
+        left: 10px;
+    }
+    
+    .nav-arrow-right {
+        right: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .nav-arrow-left {
+        left: 8px;
+    }
+    
+    .nav-arrow-right {
+        right: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    .nav-arrow-left {
+        left: 5px;
+    }
+    
+    .nav-arrow-right {
+        right: 5px;
+    }
+}
+
 .sub-title{
     text-align: center;
     font-size: 60px;
