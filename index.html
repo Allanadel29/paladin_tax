@@ -22,7 +22,7 @@
             <a href="#services"style ="--1:2" class="nav-link">OUR SERVICES</a>
             <a href="#contact"style ="--1:4" class="nav-link">CONTACT US</a>
         </nav>
-        <i class="fa fa-home menu-icon" id="menu-btn" aria-label="Open menu" title="Menu"></i>
+        <i class="fa fa-bars menu-icon" id="menu-btn" aria-label="Open menu" title="Menu"></i>
     </header>
     <hr>
     <!-- Mobile left-side nav (hidden on wide screens) -->
@@ -87,7 +87,13 @@
             <div class="container">
                 <h1 class="sub-title">Our<span> Services</span></h1>
                 <div class="services-slider">
+                    <button class="nav-arrow nav-arrow-left" id="nav-arrow-left" aria-label="Previous service">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
                     <div id="service-display" class="service-display" aria-live="polite"></div>
+                    <button class="nav-arrow nav-arrow-right" id="nav-arrow-right" aria-label="Next service">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
                     <div class="dots" id="service-dots" role="tablist" aria-label="Service navigation"></div>
                 </div>
                 
