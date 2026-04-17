@@ -354,7 +354,7 @@ function scrollToContact(serviceTitle) {
     
     // Set the subject input after a short delay to ensure scrolling is complete
     setTimeout(() => {
-      const subjectInput = document.querySelector('.contact-form input[type="text"]');
+      const subjectInput = document.querySelector('.contact-form input[type="subject"]');
       if (subjectInput) {
         subjectInput.value = `Quotation Request: ${serviceTitle}`;
         subjectInput.focus();
