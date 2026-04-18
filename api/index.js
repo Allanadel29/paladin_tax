@@ -20,7 +20,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER || 'paladin.taxandtransferpricing@gmail.com',
-    pass: process.env.EMAIL_PASSWORD // App password from Gmail
+    pass: process.env.EMAIL_PASSWORD
   }
 });
 
@@ -28,6 +28,8 @@ const transporter = nodemailer.createTransport({
 transporter.verify((error, success) => {
   if (error) {
     console.log('Email service error:', error);
+    console.log('EMAIL_USER env:', process.env.EMAIL_USER ? 'SET' : 'NOT SET');
+    console.log('EMAIL_PASSWORD env:', process.env.EMAIL_PASSWORD ? 'SET' : 'NOT SET');
   } else {
     console.log('Email service ready:', success);
   }
