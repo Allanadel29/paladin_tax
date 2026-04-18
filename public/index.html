@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+    <title>paladin.tax</title>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/a1.png" alt="Paladin Tax Logo" width="150" height="50">
+            <figcaption><strong>TAX & TRANSFER PRICING SOLUTIONS LIMITED</strong></figcaption>
+        </a>
+        <nav class="navbar">
+            <a href="#home" style ="--1:1"class="active">HOME</a>
+            <a href="#about"style ="--1:3" class="nav-link">ABOUT US</a>
+            <a href="#services"style ="--1:2" class="nav-link">OUR SERVICES</a>
+            <a href="#contact"style ="--1:4" class="nav-link">CONTACT US</a>
+        </nav>
+        <i class="fa fa-bars menu-icon" id="menu-btn" aria-label="Open menu" title="Menu"></i>
+    </header>
+    <hr>
+    <!-- Mobile left-side nav (hidden on wide screens) -->
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+        <i class="fa fa-times close-mobile" id="close-mobile" aria-label="Close menu" title="Close"></i>
+        <a href="#home" class="mobile-link">HOME</a>
+        <a href="#about" class="mobile-link">ABOUT US</a>
+        <a href="#services" class="mobile-link">OUR SERVICES</a>
+        <a href="#contact" class="mobile-link">CONTACT US</a>
+    </div>
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>_____ Welcome to Paladin Tax</h3>
+            <h1>Your trusted choice for <br><i>Corporate Tax: <span class="text"></span></i> <br>Complaince</h1>
+            <p>At Paladin Tax, we specialize in providing comprehensive corporate tax compliance services to businesses of all sizes.<br> Our team of experienced professionals is dedicated to ensuring that your company meets all regulatory requirements while optimizing your tax strategies.</p>
+
+            <!--
+            <div class="home-sci">
+                <a href="https://wa.me/260971104775" target="_blank">   
+                <i class="fa-brands fa-whatsapp" style="color:#25d366; font-size:24px;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'"></i>
+                </a>
+                <a href="https://facebook.com/Adel" target="_blank">
+                <i class="fa-brands fa-facebook" style="color:#1877f2; font-size:24px;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'"></i>
+                </a>
+                <a href="https://instagram.com/allanadel_29" target="_blank">
+                <i class="fa-brands fa-instagram" style="color:#e4405f; font-size:24px;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'"></i>
+                </a>
+                <a href="https://www.tiktok.com/@thedictator_29" target="_blank">
+                <i class="fa-brands fa-tiktok" style="color:#fff; font-size:24px;"></i>
+                </a>
+
+            </div>
+            -->
+            <a href="#about" class="btn-box">More About Us</a>
+        </div>
+
+    </section>
+
+  
+
+    <!--#About Section-->
+
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="images/64 x 64 white.svg" alt="">
+        </div>
+        <div class="about-text">
+            <h2>About<span> Us</span></h2>
+            <h4>We are here to help your business thrive</h4>
+            <p>Paladin is a Zambian professional tax and advisory firm specializing in tax compliance, transfer pricing, and regulatory advisory services for businesses in Zambia.</p>
+            <p>We provide expert services in Transfer Pricing documentation and policy formulation, Transfer Pricing audit support and engagement with the Zambia Revenue Authority (ZRA), Comprehensive Transfer Pricing Health Checks, Tax advisory, Corporate Income Tax, VAT compliance, payroll management, Withholding Tax filings, and statutory compliance services including NAPSA and NHIMA.</p>
+            <p>Our team comprises experienced tax practitioners with strong local and international tax expertise, combining in-depth knowledge of Zambian tax legislation with global best practices. We work closely with our clients to ensure regulatory compliance, manage tax risk, and support informed business and investment decisions.</p>
+            <p>At Paladin, we are committed to professionalism, integrity, and delivering practical solutions in an evolving tax and regulatory environment.</p>
+           <!-- 
+            <a href="#" class="btn-box" style="animation: slideBottom 1s ease forwards; animation-delay: 0.8s;">Read More</a>
+           -->
+        </div>
+    </section>
+
+      <!--#services section-->
+
+    <section>
+        <div class="services" id="services">
+            <div class="container">
+                <h1 class="sub-title">Our<span> Services</span></h1>
+                <div class="services-slider">
+                    <button class="nav-arrow nav-arrow-left" id="nav-arrow-left" aria-label="Previous service">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div id="service-display" class="service-display" aria-live="polite"></div>
+                    <button class="nav-arrow nav-arrow-right" id="nav-arrow-right" aria-label="Next service">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <div class="dots" id="service-dots" role="tablist" aria-label="Service navigation"></div>
+                </div>
+                
+                <!-- Detailed View Overlay -->
+                <div class="detail-overlay" id="detail-overlay">
+                    <div class="detail-container">
+                        <div class="detail-content">
+                            <!-- Content will be inserted in JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Global Close Button -->
+    <button class="close-detail" id="global-close-btn">&times;</button>
+
+
+    <!--#achievement section-->
+
+    <section class="achievement">
+       <div class="image-container">
+        <img src="images/pexels-n-voitkevich-6863332.jpg">
+       </div>
+       <div class="content">
+        <h4 class="subheading"> Why Choose Us</h4>
+        <h2 class="heading">we protect your<span>  Business</span></h2>
+        <p class="commonText">
+            Our team of seasoned tax and compliance professionals leverages their in-depth knowledge of Zambian tax regulations and statutory requirements to deliver practical, business-focused advice, ensuring confidential and secure data handling, technology-enabled service delivery, and dedicated client service teams, all at an affordable and scalable cost, making us the ideal partner for your tax and compliance needs.</p>
+            <div class="stats">
+            <div class="stat-box">
+                <i class="fa-solid fa-file"></i>
+                <div class="stat-text">
+                    <h3 class="counter" data-target="2650">0</h3>
+                    <span>Projects Completed</span>
+                </div>
+            </div>
+            <div class="stat-box">
+                <i class="fa-solid fa-spinner"></i>
+                <div class="stat-text">
+                    <h3 class="counter" data-target="980">0</h3>
+                    <span>Running Projects </span>
+                </div>
+            </div>
+            </div>
+            <div class="stats">
+            <div class="stat-box">
+                <i class="fa-solid fa-user-check"></i>
+                <div class="stat-text">
+                    <h3 class="counter" data-target="450">0</h3>
+                    <span>Expert Consultancy</span>
+                </div>
+            </div>
+            
+            <div class="stat-box">
+                <i class="fa-solid fa-user"></i>
+                <div class="stat-text">
+                    <h3 class="counter" data-target="1250">0</h3>
+                    <span>Expert Consulatant</span>
+                </div>
+            </div>
+            </div>
+            <br/>
+            <!--
+            <a href="#" class="btn-box">Read More</a>
+            -->
+       </div>
+    </section>
+
+    <!--#contact section-->
+
+    <section class="contact" id="contact">
+        <div class="contact-text">
+            <h2 class="contact-us">Contact <span> Us</span></h2>
+            <h4>We'd love to hear from you</h4>
+            <p>If you have any questions or would like to learn more about our corporate tax compliance services, please don't hesitate to contact us. Our team of experts is here to help you navigate the complexities of taxation and ensure that your business remains compliant with all relevant regulations.</p>
+            <button class="contact-btn-mobile btn-box">Contact Us</button>
+        </div>
+
+        <div class="contact-form">
+            <form id="contactForm">
+                <input type="text" name="name" placeholder="Enter Your Name" required>
+                <input type="email" name="email" placeholder="Enter Your Email" required>
+                <input type="text" name="subject" placeholder="Enter Your Subject" required>
+                <textarea name="message" placeholder="Enter Your Message" required></textarea>
+                <button type="submit" class="btn-box">Send Message</button>
+                <div id="formMessage" style="margin-top: 15px; display: none;"></div>
+            </form>
+        </div>
+    </section> 
+    
+    <script src="./js/main.js"></script>
+
+<footer class="footer">
+    <div class="footer-left">
+        <img src="images/64 x 64 paladin white final.svg" alt="">
+            <p>Your trusted choice for Corporate Tax Compliance</p><br>
+            <div class="contact-list">
+                <li><i class="bx bxs-send"></i>paladin.taxandtransferpricing@gmail.com</li>
+                <li><i class="bx bxs-phone"></i>+260 968 008 012</li>
+            </div>
+         <div class="contact-icons" id="socials">
+                <a href="https://wa.me/260968008012" target="_blank">   
+                <i class="fa-brands fa-whatsapp" style="color:#25d366; font-size:24px;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'"></i>
+                </a>
+                <a href="https://facebook.com/Adel" target="_blank">
+                <i class="fa-brands fa-facebook" style="color:#1877f2; font-size:24px;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'"></i>
+                </a>
+                <a href="https://instagram.com/allanadel_29" target="_blank">
+                <i class="fa-brands fa-instagram" style="color:#e4405f; font-size:24px;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'"></i>
+                </a>
+                <a href="https://www.tiktok.com/@thedictator_29" target="_blank">
+                <i class="fa-brands fa-tiktok" style="color:#fff; font-size:24px;"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/Allan Adel" target="_blank">
+                <i class="fa-brands fa-linkedin" style="color:#0a66c2; font-size:24px;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'"></i>
+                </a>
+                <a href="https://twitter.com/yourusername" target="_blank">
+                <i class="fa-brands fa-twitter" style="color:#1da1f2; font-size:24px;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'"></i>
+                </a>       
+            </div>
+        </div>
+        <ul class="footer-right">
+            <li>
+                <h2 class="footer-h2">Services</h2>
+                <ul class="box">
+                    <li><a href="#">Customs</a></li>
+                    <li><a href="#">Withholding Tax</a></li>
+                    <li><a href="#">NHIMA</a></li>
+                    <li><a href="#">NAPSA</a></li>
+                    <li><a href="#">PAYE</a></li>
+                </ul>
+            </li>
+            <li class="feature">
+                <h2 class="footer-h2">Useful Links</h2>
+                <ul class="box">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </li>
+            <!--
+            <li>
+                <h2 class="footer-h2">Address</h2>
+                <ul class="box">
+                    <li><a href="#">127, Long Acres</a></li>
+                    <li><a href="#">DIA 9PS, 10101</a></li>
+                    <li><a href="#">Lusaka</a></li>
+                    <li><a href="#">Zambia</a></li>
+                </ul>
+            </li>
+            -->
+        </ul>
+
+        <div class="footer-bottom">
+            <p>© <span id="year"></span> Paladin Tax. All rights reserved by &copy;conceptial 2025</p>
+        </div>
+
+<script>
+function testService() {
+    console.log('Test button clicked');
+    if (typeof openDetailView === 'function') {
+        openDetailView(1);
+    } else {
+        console.error('openDetailView function not found');
+    }
+}
+</script>
+
+<script src="./js/main.js"></script>
+</footer>
+</body>
+</html>

@@ -12,8 +12,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files from root directory (parent of api folder)
-app.use(express.static(path.join(__dirname, '..')));
+// Serve static files from /public directory
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Configure nodemailer transporter
 const transporter = nodemailer.createTransport({
@@ -103,11 +103,11 @@ app.get('/api/health', (req, res) => {
 
 // Serve index.html for root path and catch-all
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'index.html'));
+  res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'index.html'));
+  res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
 // Helper function to escape HTML

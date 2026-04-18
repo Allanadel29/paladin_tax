@@ -1,15 +1,10 @@
 {
   "buildCommand": "npm install",
+  "public": "public",
   "functions": {
     "api/index.js": {
       "memory": 1024,
       "maxDuration": 60
     }
-  },
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api"
-    }
-  ]
+  }
 }
