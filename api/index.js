@@ -50,8 +50,8 @@ app.post('/api/send-email', async (req, res) => {
 
     // Email to Paladin Tax
     const mailOptions = {
-      from: process.env.EMAIL_USER || 'adelmumba8@gmail.com',
-      to: process.env.EMAIL_USER || 'adelmumba8@gmail.com',
+      from: process.env.EMAIL_USER || 'paladin.taxandtransferpricing@gmail.com',
+      to: process.env.EMAIL_USER || 'paladin.taxandtransferpricing@gmail.com',
       subject: `New Form Submission: ${subject}`,
       html: `
         <h2>New Form Submission</h2>
@@ -68,7 +68,7 @@ app.post('/api/send-email', async (req, res) => {
 
     // Optional: Send confirmation email to the sender
     const confirmationEmail = {
-      from: process.env.EMAIL_USER || 'adelmumba8@gmail.com',
+      from: process.env.EMAIL_USER || 'paladin.taxandtransferpricing@gmail.com',
       to: email,
       subject: 'We received your message - Paladin Tax',
       html: `
@@ -129,7 +129,7 @@ if (require.main === module) {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
-    console.log('Email service configured for:', process.env.EMAIL_USER || 'adelmumba8@gmail.com');
+    console.log('Email service configured for:', process.env.EMAIL_USER || 'paladin.taxandtransferpricing@gmail.com');
   });
 }
 
