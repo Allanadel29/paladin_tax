@@ -227,6 +227,28 @@ const detailOverlay = document.getElementById('detail-overlay');
 const detailContent = document.querySelector('.detail-content');
 const globalCloseBtn = document.getElementById('global-close-btn');
 
+if (!document.documentElement.dataset.cleanHashNavigation) {
+  document.documentElement.dataset.cleanHashNavigation = 'true';
+
+  window.addEventListener('load', () => {
+    if (window.location.hash) {
+      window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+    }
+  }, { once: true });
+
+  document.addEventListener('click', (event) => {
+    if (event.defaultPrevented) return;
+
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+
+    event.preventDefault();
+    const target = document.getElementById(link.getAttribute('href').slice(1));
+    target?.scrollIntoView({ behavior: 'smooth' });
+    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+  });
+}
+
 // Function to show overlay with key deliverables for service 13
 function showKeyDeliverablesOverlay(service) {
   if (!detailOverlay || !detailContent) return;
