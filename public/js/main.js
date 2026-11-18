@@ -764,7 +764,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Create intersection observer for section animations
+    // Create intersection observer for section animations 
     const sectionObserverOptions = {
         threshold: 0.15,
         rootMargin: '0px 0px -100px 0px'
