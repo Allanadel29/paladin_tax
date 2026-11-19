@@ -16,7 +16,7 @@ const services = [
 
   { id: 2, icon: 'fa-solid fa-file-invoice-dollar', 
     title: 'Income Tax Return Filing Services', 
-    desc: 'Ed-to-end preparation and submission of annualincome tax returns.',
+    desc: 'Ed-to-end preparation and submission of annual income tax returns.',
     keyDeliverables: [
       'Completed annual income tax return (ITF form)',
       'Electronic submission to ZRA',
@@ -61,7 +61,7 @@ const services = [
     desc: 'Healthy insurance contribution compliance and reporting services.',
     keyDeliverables: [
       'Monthly NHIMA return preparation and submission',
-      'PAyroll reconciliation'
+      'Payroll reconciliation'
     ]
   },
 
